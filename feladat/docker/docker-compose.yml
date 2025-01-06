@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+ postgres:
+  container_name: beadando-postgres
+  image: postgres:latest
+  environment:
+   - POSTGRES_PASSWORD=12345678
+   - POSTGRES_USER=postgres
+   - POSTGRES_DB=beadando
+   
+  ports:
+   - '5432:5432'
+  volumes:
+   - ./volumes/postgres:/data/db
+  networks:
+   - beadando-network
+
+networks:
+ beadando-network:
+  name: beadando-network
